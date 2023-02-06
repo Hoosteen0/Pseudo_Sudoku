@@ -1,4 +1,6 @@
 # imports
+import Generator
+
 
 def main():
     # make a new board with generator
@@ -6,7 +8,6 @@ def main():
     # pass board to Solver
 
     # output board?
-
-    pass
+    new_board = Generator.Generator(5, 3)
 
 main()
