@@ -53,11 +53,28 @@ class Generator:
             # run loop to assign rest in col
             for k in range(intersect+1, board.shape[0]):
                 data = rand_choice(col_num)
+                # check left to see if values match data
+                temp_list = []
+                for o in range(intersect-1, -1, -1):
+                    # new error, only remaining value in the list is already assigned in the row/list, which means
+                    #  we have to backtrack TO-DO
+                    if data == board[k, o]:
+                        # hold data in a temp list, and try again until you find something that works
+                        temp_list.append(data)
+                        data = rand_choice(col_num)
                 board[k, intersect] = data
+                col_num.extend(temp_list)
             # run loop to assign rest in row
             for l in range(intersect+1, board.shape[0]):
                 data = rand_choice(row_num)
+
+                temp_list_vert = []
+                for p in range(intersect-1, -1, -1):
+                    if data == board[p, l]:
+                        temp_list_vert.append(data)
+                        data = rand_choice(row_num)
                 board[intersect, l] = data
+                row_num.extend(temp_list_vert)
         print(board.view())
         return board
 
