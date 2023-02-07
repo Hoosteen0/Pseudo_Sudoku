@@ -1,0 +1,26 @@
+# imports
+import random as rand
+import numpy as np
+
+n = 4
+num_list = list(range(1,n+1))
+
+board = np.zeros((n,n), dtype=int)
+while np.any(np.isin(board, 0)):
+    board = np.zeros((n,n), dtype=int)
+    for val in num_list:
+        valid_col = list(range(n))
+        for i in range(board[0].size):
+            rand_col = rand.choice(valid_col)
+            loop_count = 0
+            while board[i][rand_col] != 0 or rand_col not in valid_col:
+                rand_col = (rand_col + 1) % n
+                loop_count += 1
+                if loop_count >= n:
+                    break
+            board[i][rand_col] = val
+            valid_col.remove(rand_col)
+
+print()
+print("Finished")
+print(board)
