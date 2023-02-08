@@ -8,6 +8,7 @@ def main():
     # pass board to Solver
 
     # output board?
-    new_board = Generator.Generator(5, 3)
+    new_board = Generator.Generator(3, 3)
+
 
 main()
